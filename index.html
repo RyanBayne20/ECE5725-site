@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang=>
+	<head>
+		<title>Pi CarDash</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><strong><a href="#header">Pi CarDash</a></strong></h1>
+					<ul>
+						<li><a href="#header">Home</a></li>
+						<li><a href="#video">Demo</a></li>
+						<li><a href="#intro">Introduction</a></li>
+						<li><a href="#design">System</a></li>
+						<li><a href="#build">Testing</a></li>
+						<li><a href="#result">Results</a></li>
+						<li><a href="#future">Future</a></li>
+						<li><a href="#team">Team</a></li>
+					</ul>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<h2>Pi CarDash</h2>
+				<p>A Cornell ECE 5725 Final Project<br />by Tyman Sin and Ryan Bayne</p>
+				<ul class="actions">
+					<li><a href="#video" class="button special big">Learn More</a></li>
+				</ul>
+			</section>
+
+			<!-- Objective -->
+				<section id="objective" class="wrapper style1">
+					<div class="container 75%">
+						<div class="row 100%">
+							<div class="6u 12u$(medium)">
+								<header class="major">
+									<h2>Objective</h2>
+								</header>
+							</div>
+							<div class="6u$ 12u$(medium)">
+								<p>For this project, we created a head unit for vehicles that can display information that is not available on the standard gauges, can display and record dashcam footage, and can display a primitive navigation system. Automotive diagnostics are very important for keeping cars running properly. All cars sold in the USA after 1996 have an OBDII (On-Board Diagnostics II) port which can be used to access information about the vehicle, including live data and check-engine codes. With most older cars lacking key information or functionality we decided to provide our own system.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Video -->
+				<section id="video" class="wrapper style2 special">
+					<div class="center-block">
+		  				<h2 style="text-align:center;">Demonstration Video</h2>
+          				<video width="640" height="360" controls="controls">
+							<source src="/videos/finalVideo.mp4" type="video/mp4">
+						</video>
+      				</div>
+				</section>
+			<hr />		
+			<!-- Introduction -->
+				<section id="intro" class="wrapper style1">
+					<div class="container">
+						<header>
+							<h2>Introduction</h2>
+						</header>
+						<div class="row 300%">
+								<p style="text-align: left">For this project, we used a Raspberry Pi as the main computing platform. This was connected via bluetooth to a OBDII adapter that plugged into the car port. A large touchscreen display was connected to the Pi to display the relevant graphics and information. A touch-functional menu was implemented allowing navigation between engine status, dashcam, and GPS tabs. A camera module was connected to the Pi to display realtime dash footage and offer the driver an option to record and save the dash video should they wish to. A GPS unit was connected to the Pi in order to track the location of the car while driving, this information was used to plot the realtime location on a map displayed on the screen. The GPS also supplied the date and time which was displayed at all times on the screen. The entire system was powered by the car's 12V cigarette adapter port.</p>
+						</div>
+					</div>
+				</section>
+				
+		<hr />
+				<!-- System Design -->
+				<section id="design" class="wrapper style2 special">
+					<div class="container">
+						<header class="major">
+							<h2>System Design</h2>
+							<p>A module approach</p>
+						</header>
+						<div class="row 50% uniform">
+							<div class="3u"><span class="image fit"><img src="images/spacer.png" alt="" /></span></div>
+							<div class="6u"><span class="image fit"><img src="images/SmallSystemDesign.png" alt="" /></span><h6>Figure 1: Full System Sketch</h6></div>
+							<div class="2u$"><span class="image fit"><img src="images/spacer.png" alt="" /></span></div>
+						</div>
+						<div class="row 300%">
+						<p style="text-align: left">The system was designed to include an OBDII module, a camera module, a GPS module, and a touchscreen module all connected to the central Raspberry Pi. The entire system was to be powered by the car through a 12V adapter. All modules would be connected through physical ports or wires except the OBDII scanner, that would be connected over bluetooth to the Pi.</p>
+						</div>
+						<div class="row 50% uniform">
+						<div class="4u"><span class="image fit"><img src="images/Status.png" alt="" /></span><h6>Figure 2: Status Screen Sketch</h6></div>
+						<div class="4u"><span class="image fit"><img src="images/DashcamSketch.png" alt="" /></span><h6>Figure 3: Dashcam Screen Sketch</h6></div>
+						<div class="4u$"><span class="image fit"><img src="images/GPS.png" alt="" /></span><h6>Figure 4: GPS Screen Sketch</h6></div>
+						</div>
+						<div class="row 300%">
+						<p style="text-align: left">We designed the system interface such that it would have a top bar menu with touch sensitive buttons to switch between functions and "screens". The default screen upon power on would be the vehicle status screen. We envisioned displaying information such as revolutions per minute (RPM), engine coolant temperature, and mass airflow at the engine intake (MAF). We pictured dynamic bar charts for the coolant temperature and the MAF while using a circular dial with a dynamic needle for the RPM gauge. The bar charts would linearly adjust their color from green to red as they increased in value.</p>
+						<p style="text-align: left">The dashcam screen was designed to display a live feed from the camera to the screen when active. It would feature a record button that could be pressed to enable a live video recording that would be saved to the system when the user pressed the stop button. A red dot would appear while recording to make clear to the user that it was actively recording.</p>
+						<p style="text-align: left">The GPS screen was designed to overlay a green indicator corresponding to the car location on a background map tile. In theory, the map tile would adjust as the indicator neared the boundaries and render more map and shift to keep the car location within the bounds of the tile. The project initially intended to make use of Open Street Maps to pull map data and render the necessary map tiles for the region surrounding the location at the time of display.</p>
+						</div>
+					</div>
+				</section>
+			<hr />
+			
+			<!-- Build + Testing -->
+				<section id="build" class="wrapper style1">
+					<div class="container">
+						<header>
+							<h2>Build + Testing</h2>
+						</header>
+						<div class="row 300%">
+								<p style="text-align: left">We built this system in modules over the duration of the project. Each week we worked on a different subsystem before merging it to the master system at the end of that week of development. This enabled better time management and also version control incase one of the modules proved faulty upon integration.</p>
+								<p style="text-align: left"><b>OBDII BLE Scanner:</b> The first module we worked on was the OBDII scanner itself. The install of the necessary software was relatively straightforward with no issues. The bluetooth connection was more difficlut to set up, but both the OBD install and BLE connection setup can be found in the github repository <a href="https://github.com/TymanLS/pi-cardash">here</a>.</p>
+								<p style="text-align: left"><b>Graphical User Interface:</b> The second module we worked on was the touchscreen and default status screen. With knowledge of pygame from the labs, we decided to stick with it to implement our graphics and touch interactivity. Pygame is a set of Python modules for video game development. It is free to download and runs on most platforms and operating systems. Pygame comes preinstalled on Raspbian, however if needed, the install info can be found <a href="https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation">here</a>. Ryan ran into issues getting started with the Raspberry Pi because he did not have a keyboard or monitor, only his laptop. After borrowing a roommates keyboard and configuring connection to wifi according to <a href="https://spin.atomicobject.com/2019/06/09/raspberry-pi-laptop-display/">this</a> guide, the connection to the pi over the home wifi proved incredibly slow when using ssh. Accordingly, a VNC was setup using the program <a href="https://www.realvnc.com/en/connect/download/viewer/">VNC Viewer</a> and connecting the pi to the home network directly via an ethernet cable. <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">This</a> Raspberry Pi configuration page as well as <a href="https://www.youtube.com/watch?v=ry0CWCWisX0">this</a> youtube guide proved helpful in establishing the setup. In setting up the screen module itself, it required a few added lines to config.txt which is outline by the product page <a href="https://web.archive.org/web/20190911135046/http:/www.raspberrypiwiki.com/index.php/7_inch_HDMI_TFT_Capacitive_Touch_Screen_1024x600_SKU:408999">here</a>. While this worked for the display functionality, we ran into issues with the touchscreen. In an attempt to use fbcon, as we had in lab during the semester, the screen registered touch but the data did not correspond to the correct location on the screen. Eventually, we found a solution by starting X11 for a single application as <a href="https://raspberrypi.stackexchange.com/questions/11866/how-can-i-start-x11-only-for-a-single-application">this</a> guide details. By adding</p> 
+								<pre><code style="text-align: left">
+startx --kiosk --
+								</code></pre> 
+								<p style="text-align: left">to .bashrc, the touchscreen properly worked. Another issue we faced was specific to the RPM gauge. When using pygame to rotate the needle we ran into two problems. The first was if you do not specifically set the alpha values of a surface, in our case the rect for the needle, when rotating any amount that is not a multiple of 90, pygame adds a padding to the rect which essentially makes it a large square of color instead of a thin needle. We fixed that by using pygame.SRCALPHA in creating the needle surface.</p>
+								<pre><code style="text-align: left">
+self.__needle = pygame.Surface((radius // 32, radius), pygame.SRCALPHA)
+								</code></pre>
+								<p style="text-align: left">The second issue occured when rotating more than 0-90 degrees. When doing so, the rect would no longer be centered on the gauge. We fixed this by recognizing that the rect’s previous left and top was no longer the new left and top so we had to adjust the needle postion by either the width, height, or both of the rect depending on what desired rotation was and what quadrant it fell into. For example, if the rotation angle fell in the third quadrant (180 - 270) where 0 is directly pointing down from the center of the rpm gauge, the left was set to center of the rpm gauge less the width of the needle rect, and the top was set to center of the rpm gauge less the height of the needle rectangle. Note, we used a png file for the RPM gauge background which can be found <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngimage.net%2Frpm-gauge-png-6%2F&psig=AOvVaw3mtnTYHGcvJaTpm1aJhg7a&ust=1589805471715000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCPi_sYX1uukCFQAAAAAdAAAAABAD">here</a>.</p>
+								<pre><code style="text-align: left">
+elif self.__needle_angle &lt; 180 and self.__needle_angle &ge; 270:
+	screen.blit(rot_needle, (x - rot_needle.get_width(), y - rot_needle.get_height()))
+								</code></pre>
+		  	  					<p style="text-align: left">And the end of testing, the default status display upon power on looked as shown below:</p>
+								<div style="text-align:center"><span class="image fit"><img class="6u$" src="/images/statusScreenShot.jpg" alt=""/></span><h6>Figure 5: Picture of the final status screen</h6></div>
+								<p style="text-align: left"><b>Dashcam:</b> The third module we worked on was the dashcam. We decided to use the piCamera library with the project since it comes preinstalled with Raspbian. We created a live feed by using a preview that essentially hijacked the framebuffer to overlay the camera feed on our pygame GUI. When the dashcam menu button was pressed the preview window was shown and when the user navigated away from the dashcam menu button it was hidden. While viewing the dashcam feed, the user could elect to press a record button that was enabled through pygame. When pressed, it would begin saving a video file in one minute increments, within a folder that was labeled with the time stamp at the press of record. The reason one minute increments were used was to enable error checking. The pi is only capable of checking if there was a successful recording when the recording is saved to file, and so by recording in one minute increments, the system is able to check every minute if there was an error or not. The picamera library has a macro that enables cutting of video which made this an easy implementation.  When the user desires to stop the recording, they press the stop button enabled through pygame and the latest one minute recording is stopped and saved. The user may then access the video files by removing the miniSD card from the pi and placing in a computer. One bug we encountered with the record functionality was that when a user had pressed record then subsequently navigated to another tab and then returned to the dashcam tab, the record button would reappear despite the device actively recording. We tracked this bug to a line of code that reset a recording flag whenever the user navigated to the dashcam page. By removing the line prompting the flag change the bug was resolved. The finished dashcam page looked as shown below:</p>
+			  					<div style="text-align:center;">
+              						<img class="10u$" src="images/dashcamScreenShot.jpg" alt="Final Dashcam Screen" style="width:50%;"><h6>Figure 6: Picture of the final dashcam appearance</h6>
+									<h6>Example dashcam clip downloaded from the system post drive</h6>
+									<video width="480" height="270" controls="controls">
+										<source src="videos/DashcamFootage.mp4" type="video/mp4">
+									</video>
+								</div>
+								<p style="text-align: left"><b>GPS: </b>The GPS module was the last piece of the project to arrive due to COVID-19 related logistic delays. To use the GPS unit, we installed gpsd a daemon specially designed for gps and commonly used on Unix-like software, its documentation can be found <a href="https://gpsd.gitlab.io/gpsd/index.html">here</a>. To install we simply ran:</p>
+								<pre><code>
+sudo apt-get install gpsd
+								</code></pre> 
+								<p style="text-align: left">To then use the daemon we installed a corresponding python library through:</p>
+								<pre><code>
+pip install gpsd --user
+								</code></pre>
+								<p style="text-align: left"> The user option was added so that the install would be constrained to the active user and not the enitre system. We then worked on implementing a dummy test system so that when the GPS module arrived we would be able to take the data sent from the GPS and plug it into the already built module. The project had orginally hoped to use Open Street Maps to pull and render our own slippy map, but after diving deeper into the steps that would be required to bring this to life we realized that it was out of scope for our remaining time line. We instead chose to pull a screenshot of an Arizona neighborhood that was large enough to demonstrate the feasibility of our system. To do so we navigated to the export tab of the open street map site <a href="https://www.openstreetmap.org/export#map=12/33.4569/-111.9339">here</a>. We then were able to specify the bounds that we wanted for the tile and then download the specified region as an image. We used pygame to display this map "tile" and then used a small dot to represent the cars location. By mapping a linear function between the number of pixels on the screen and the longitude and latitude bounds of the tile, we were able to take an input of longitude and latitude from the GPS and convert it to pixel values to change the location of the dot representing the car's location. The system was implemented in such a way that theoretically, if we had taken a series of map images or "tiles" and linked their respective longitude and latitude bounds, that when the system approached the bounds of a tile, the system could have changed the background tile and the function relating pixels to the new bounds. This would still not be a final solution however. To implement a navigation system that appeared as if the map was scrolling and not incrementally shifting, it would have required more time and back end then our remaining timeline allowed. Our final GPS screen appeared as show below: </p>
+								<div style="text-align:center;">
+              					<img class="10u$" src="images/gpsScreenShot.jpg" alt="Final GPS Screen" style="width:50%;"><h6>Figure 7: Picture of the final GPS screen appearance</h6></div>
+			  			</div>
+					</div>
+					
+				</section>
+				
+		<hr />
+					
+			<!-- Result -->
+				<section id="result" class="wrapper style1">
+					<div class="container">
+						<header>
+							<h2>Results</h2>
+						</header>
+						<div class="row 300%">
+								<p style="text-align: left;padding: 0px 30px;">We largely met the goals outline in our original project description. The only obvious difference from our project vision and the final system was the navigation system. As we spoke to above in the <b>GPS</b> section of <b>Build + Testing</b>, we chose to change the scope of our navigation system based on time constraints. Despite being open source and free to access, we underestimated the necessary back end that would enable a scrolling map feature with large bounds. Had the project had two more weeks we believe we could have given this more complex navigation system a shot. For the purposes of this project though, our final system still demonstrates the vision and provides a first step in the eventual implementation of a home navigation system. All other aspects of the system were completed to original specification. Our system is capable of displaying real time engine data in a visual format, it is also capable of displaying a live dashcamera feed with record functionality.</p>
+						</div>
+					</div>
+				</section>
+					
+			<hr />
+					
+			<!-- Future Work -->
+				<section id="future" class="wrapper style1">
+					<div class="container">
+						<header>
+							<h2>Future Work</h2>
+						</header>
+						<div class="row 300%">
+								<p style="text-align: left;padding: 0px 30px">As mentioned above in <b>Results</b>, if we continued to pursue this project we would have worked to implement a more functional navigation system with a scrolling map.</p>
+		  						<p style="text-align: left;padding: 0px 30px">We may have also explored a menu funtionality that could enable the user to dynamically choose which gauges or engine information to display on the status screen.</p> 
+								<p style="text-align: left;padding: 0px 30px">As for the camera, we had spoke about perhaps a backup camera functionality, but realized that with the project's budget we would not be able to afford it given it would take a Raspberry Pi Zero and a second camera module; however, it could be a fun future pursuit for the system.</p>
+						</div>
+					</div>
+				</section>
+					
+			<hr />
+			<!-- Team -->
+				<section id="team" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Team</h2>
+						</header>
+						<div class="feature-grid">
+							<div class="feature">
+								<div class="image rounded"><img src="images/Tyman.jpg" alt="Tyman headshot" /></div>
+								<div class="content">
+									<header>
+										<h4>Tyman Sin</h4>
+										<p>ts835@cornell.edu</p>
+									</header>
+									<p>Tyman (CS MEng '20) took lead developing the overall software architecture and testing the cohesive system with his car in Arizona. Both partners contributed to the report content.</p>
+								</div>
+							</div>
+							<div class="feature">
+								<div class="image rounded"><img src="images/Ryan.jpg" alt="Ryan headshot" /></div>
+								<div class="content">
+									<header>
+										<h4>Ryan Bayne</h4>
+										<p>rpb228@cornell.edu</p>
+									</header>
+									<p>Ryan (MechE MEng '20) supported the software development virtually from Ithaca and took lead on writing the html. Both partners contributed to the report content.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			
+			<hr />
+			<!-- Parts -->
+				<section>
+					<h3>Parts</h3>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Link</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								  <tr>
+									  <td>Raspberry Pi 3</td>
+									  <td>NA - Provided in Lab</td>
+									  <td>Free ($35.00)</td>
+								  </tr>
+								  <tr>
+									  <td>Raspberry Pi Camera</td>
+									  <td>NA - Provided in Lab</td>
+									  <td>Free ($25.00)</td>
+								  </tr>
+								  <tr>
+									  <td>OBDII BLE Scanner</td>
+									  <td><a href="https://www.amazon.com/Veepeak-OBDCheck-Bluetooth-Diagnostic-Supports/dp/B073XKQQQW">Amazon</a></td>
+									  <td>$32.99</td>
+								  </tr>
+								  <tr>
+									  <td>12V Cigarette Outlet Power Adapter</td>
+									  <td><a href="https://www.amazon.com/Car-Charger-Transformer-Book-T100-Motorola-SoundLink/dp/B00JK15VA4/ref=cm_cr_arp_d_pl_foot_top?ie=UTF8">Amazon</a></td>
+									  <td>$9.99</td>
+								  </tr>
+								  <tr>
+									  <td>7" Capacitive Touchscreen</td>
+									  <td><a href="https://www.amazon.com/Guhui-Capacitive-Display-800x480-Raspberry/dp/B07N1P5YWR/ref=sr_1_44?keywords=raspberry+pi+touchscreen+7+inch&qid=1585275551&refinements=p_36%3A-5000&rnid=386442011&s=electronics&sr=1-44">Amazon</a></td>
+									  <td>$40.99</td>
+								  </tr>
+								  <tr>
+									  <td>USB GPS Dongle for Raspberry Pi</td>
+									  <td><a href="https://www.amazon.com/Navigation-Glonass-Stratux-10-Raspberry/dp/B07QRGK7ZK/ref=sr_1_8?dchild=1&keywords=usb+gps+module&qid=1586717297&sr=8-8">Amazon</a></td>
+									  <td>$13.49</td>
+								  </tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td><b>Total</b></td>
+									<td colspan="1"></td>
+									<td>$97.46</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</section>
+			<!-- End -->
+				<section id="diy" class="wrapper style3 special">
+					<div class="container">
+						<header class="major">
+							<p>Take your own shot at building a pi cardash!</p>
+						</header>
+						<ul class="actions">
+							<li><a href="https://github.com/TymanLS/pi-cardash" class="button special big">Get Started</a></li>
+						</ul>
+					</div>
+				</section>
+			<!-- References -->
+				<section id="references" class="wrapper style1">
+					<h2>References</h2>
+						  <a href="https://github.com/TymanLS/pi-cardash">The entirety of our code and project assets</a><br>
+						  <a href="https://picamera.readthedocs.io/">PiCamera Document</a><br>
+						  <a href="https://www.pygame.org/docs/">Pygame Documentation</a><br>
+						  <a href="https://www.realvnc.com/en/connect/download/viewer/">VNC Viewer Program</a><br>
+						  <a href="https://www.youtube.com/watch?v=ry0CWCWisX0">Enabling ssh on RPi with no desktop</a><br>
+						  <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">Rasberry Pi Documentation for Configuring VNC</a><br>
+						  <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-picamera">Raspberry Pi Reference material for using Camera Module</a><br>
+						  <a href="http://getbootstrap.com/">Bootstrap</a><br>
+						  <a href="http://abyz.co.uk/rpi/pigpio/">Pigpio Library</a><br>
+						  <a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/">R-Pi GPIO Document</a><br>	
+				</section>
+					
+		<hr />
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="copyright">
+						<li>&copy; Ryan Bayne and Tyman Sin 2020</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
